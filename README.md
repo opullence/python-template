@@ -23,7 +23,7 @@ Contains requirements files for `pip install`:
 ### `tests/`
 Unit testing script files. Unit testing is done using `unittest`. This folder should contains an `__init__.py` file. Each unit testing script should be named `test_featurename.py`.
 
-### `wavely/python_project_template/`
+### `opulence/python_template/`
 Core of the package. Contains all the source codes. Be careful to add the relevant sub-modules in the `__init__.py` for installation.
 
 ### `.gitignore`
