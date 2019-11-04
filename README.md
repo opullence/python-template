@@ -1,4 +1,5 @@
 # python-project-template
+
 Python project template used as starting point for other projects.
 
 ## Content
