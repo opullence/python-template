@@ -5,6 +5,6 @@ tests:
   stage: test
   script:
     - pip install -r requirements.txt
-    - python -m unittest discover --verbose . "*_test.py"
+    - python -m unittest discover --verbose .
   tags:
     - docker
