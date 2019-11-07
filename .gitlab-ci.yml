@@ -1,0 +1,11 @@
+stages:
+  - test
+
+tests:
+  stage: test
+  script:
+    - pip install --upgrade pip
+    - pip install -r requirements.txt
+    - python -m unittest discover --verbose . "*_test.py"
+  tags:
+    - docker
