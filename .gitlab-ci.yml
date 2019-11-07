@@ -2,6 +2,7 @@ stages:
   - test
 
 tests:
+  image: python:3.6-alpine
   stage: test
   script:
     - pip install -r requirements.txt
