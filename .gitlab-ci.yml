@@ -15,11 +15,13 @@ after_script:
 
 pylama:
   image: python:3.6
-  stage: test
+  stage: lint
   script: tox -e linters
 
 isort:
   image: python:3.6
+  stage: lint
+  script: tox -e isort
 
 python34:
   image: python:3.4
@@ -40,4 +42,3 @@ python37:
   image: python:3.7
   stage: test
   script: tox -e py37
-
