@@ -1,11 +1,60 @@
-stages:
-  - test
+image: python
 
-tests:
-  image: python:3.6-alpine
+stages:
+- test
+- build
+
+before_script:
+- curl -O https://bootstrap.pypa.io/get-pip.py
+- python get-pip.py
+- pip install -r dev-requirements.txt
+
+after_script:
+- pip install codecov
+- codecov --token=$CODECOV_TOKEN
+
+python2:
+  image: python:2.7
   stage: test
-  script:
-    - pip install -r requirements.txt
-    - python -m unittest discover --verbose .
-  tags:
-    - docker
+  script: tox -e py27
+
+python34:
+  image: python:3.4
+  stage: test
+  script: tox -e py34
+
+python35:
+  image: python:3.5
+  stage: test
+  script: tox -e py35
+
+python36:
+  image: python:3.6
+  stage: test
+  script: tox -e py36
+
+python37:
+  image: python:3.7
+  stage: test
+  script: tox -e py37
+
+linters:
+  image: python:3.5
+  stage: test
+  script: tox -e linters
+
+docs:
+  stage: test
+  script: tox -e docs
+
+dogfood:
+  stage: test
+  script: tox -e dogfood
+
+build:
+  stage: build
+  script: tox -e build
+  artifacts:
+    paths:
+    - dist/
+    expire_in: 1 month
