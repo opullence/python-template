@@ -7,6 +7,7 @@ stages:
 before_script:
 - curl -O https://bootstrap.pypa.io/get-pip.py
 - python get-pip.py
+- pip install -r requirements.txt
 
 pylama:
   image: python:3.6
